@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+ body {
+    font-family: "Raleway", sans-serif;
+}
+#header {
+    display: block;
+    background-color: #6B3F69;
+    color: white;
+    padding: 1px;
+    margin: 0%;
+}
+#barra-lateral {
+    display: flex;
+    background-color: #DDC3C3;
+    width: 20%;
+    height: 170vh;
+}
+.nav-link {
+    display: block;
+    text-decoration: none;
+    color: #6B3F69;
+}
+.nav-link:hover {
+    background-color: #eb14e0;
+    color: white;
+}
+.nav-link:active {
+    background-color: #6B3F69;
+    color: white;
+}
+.titulos {
+    margin: 10px;
+    font-size: 25px;
+    text-align: left;
+    color: #3A6F43;
+}
+.botones {
+    margin-left: auto;
+    background-color: #6B3F69;
+    color: white;
+    border: none;
+    align-items: right;
+    border-radius: 5px;
+}
+.botones:hover {
+    border: 1px solid #6B3F69;
+    background-color: white;
+    color: #6B3F69;
+}
+.filtros-opcion {
+    width: 120px;
+}
+.filtros-texto {
+    width: 200px;
+}
+#contenedor-notas-estudiantes { 
+    flex: 1;
+    margin-top: 100px;
+}
+#formulario-registro {
+    width: 200px;
+}
+.input-group {
+    display: flex; 
+    flex: none;
+    margin-top: 12px;
+    width: 300px;
+} 
+#filtro-tipoId {
+    flex: 0 70px; 
+}
+#busqueda-id {
+    flex: 0 230px; 
+}
+.col {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.pagination {
+    color: #3A6F43;
+}
