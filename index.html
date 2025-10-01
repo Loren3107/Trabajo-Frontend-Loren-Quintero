@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Estudiantes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="d-flex justify-content-between mt-3 mb-4">
+            <h1 class="p-3">QUIPUX</h1>
+            <p class="p-3">Loren Sofía Quintero Padierna <i class="bi bi-person-circle fs-5"></i></p>
+        </div>
+    </header>
+    <div class="d-flex">
+        <section id="barra-lateral">
+            <aside class="p-3">
+                <nav class="nav flex-column">
+                    <a id="nav-estudiantes" class="nav-link" href="#">Estudiantes</a>
+                    <a class="nav-link" href="#">Grupos</a>
+                    <a class="nav-link" href="#">Materias</a>
+                    <a class="nav-link" href="#">Evaluaciones</a>
+                    <a class="nav-link" href="#">Informes</a>
+                </nav>
+            </aside>
+        </section>
+        <div class="flex-fill d-flex flex-column p-3">
+            <section id="busqueda-estudiantes">
+                <div class="d-flex justify-content-between mt-3 mb-4">
+                    <h2 class="titulos">Administración de Estudiantes</h2>
+                    <button id="btn-registrar-estudiante" class="botones">Registrar Estudiante <i
+                            class="bi bi-clipboard2-plus"></i></button>
+                </div>
+                <div id="filtros-busqueda" class="d-flex flex-wrap gap-2 align-items-center ml-2">
+                    <input type="text" id="busqueda-nombre" class="filtros-texto form-control"
+                        placeholder="Buscar estudiante...">
+                    <select id="filtro-grado" class="filtros-opcion form-select">
+                        <option value="">Todos los grados</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
+                    <select id="filtro-grupo" class="filtros-opcion form-select">
+                        <option value="">Todos los grupos</option>
+                        <option value="A">Grupo A</option>
+                        <option value="B">Grupo B</option>
+                    </select>
+                    <div class="input-group mb-3">
+                        <select id="filtro-tipoId" class="filtros-opcion form-select">
+                            <option value="TI">TI</option>
+                            <option value="CC">CC</option>
+                            <option value="CE">CE</option>
+                        </select>
+                        <input type="text" id="busqueda-id" class="filtros-texto form-control"
+                            placeholder="Número de Documento">
+                    </div>
+                    <button id="btn-buscar-filtros" class="botones fs-5">Buscar <i class="bi bi-search"></i></button>
+                    <button id="btn-reiniciar-filtros" class="botones fs-6">Limpiar Filtros <i
+                            class="bi bi-eraser-fill"></i></button>
+                </div>
+            </section>
+            <section id="listado-estudiantes">
+                <div id="contenedor-tabla-estudiantes">
+                    <h2 class="titulos mt-5 fs-6">Resultados</h2>
+                    <table class="tablas table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Identificación</th>
+                                <th>Estudiante</th>
+                                <th>Grado</th>
+                                <th>Grupo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-estudiantes"></tbody>
+                    </table>
+                </div>
+                <div class="d-flex">
+                    <p class="justify-content-start me-5">Mostrando 1 al 5 de 150 Registros</p>
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item"><a class="page-link" href="#">Primero</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Último</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+        </div>
+        <div class="flex-fill flex-column align-items-start">
+            <section id="navegacion">
+                <div class="mt-5">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb ">
+                            <li class="breadcrumb-item text-primary"><a id="navegacion-registro" class="nav-link"
+                                    href="#">Administración de Estudiantes</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Estudiante</li>
+                        </ol>
+                    </nav>
+                </div>
+            </section>
+            <section id="registro-estudiantes">
+                <div id="contenedor-formulario-registro" class="card shadow-sm">
+                    <h2 class="titulos fs-6">Información de Estudiantes</h2>
+                    <form id="formulario-registro" class="row g-3 p-3 flex-fill w-100 text-start">
+                        <div class="col-md-3">
+                            <label for="codigo" class="form-label">Código</label>
+                            <input type="number" id="codigo" class="form-control" placeholder="Ingrese el Código">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="tipoId" class="form-label">Identificación</label>
+                            <div class="input-group">
+                                <select class="filtros-opcion form-select">
+                                    <option value="TI">TI</option>
+                                    <option value="CC">CC</option>
+                                    <option value="CE">CE</option>
+                                </select>
+                                <input type="text" class="filtros-texto form-control" placeholder="Número de Documento">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="primerNombre" class="form-label">Primer Nombre</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el Primer Nombre" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="segundoNombre" class="form-label">Segundo Nombre</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el Segundo Nombre">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="primerApellido" class="form-label">Primer Apellido</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el Primer Apellido" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="segundoApellido" class="form-label">Segundo Apellido</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el Segundo Apellido" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label d-block">Sexo</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexoFemenino"
+                                    value="femenino">
+                                <label class="form-check-label" for="sexoFemenino">Femenino</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexoMasculino"
+                                    value="masculino">
+                                <label class="form-check-label" for="sexoMasculino">Masculino</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" value="2025-09-30" min="1990-01-01" max="2026-01-01"
+                                id="fechaNacimiento">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="celular" class="form-label">Celular</label>
+                            <input type="number" class="form-control" placeholder="Ingrese el Número" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="correo" class="form-label">Correo Electronico</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el Correo" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="ciudad" class="form-label">Ciudad de Residencia</label>
+                            <select class="filtros-opcion form-select">
+                                <option value="">Seleccionar</option>
+                                <option value="Medellín">Medellín</option>
+                                <option value="Bello">Bello</option>
+                                <option value="Envigado">Envigado</option>
+                                <option value="Bogotá">Bogotá</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="direccion" class="form-label p-1">Direccion de Residencia</label>
+                            <input type="text" class="form-control" placeholder="Ej: Carrera 73A # 52A-51" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="grado" class="form-label">Grado</label>
+                            <select id="grado" class="form-select" required>
+                                <option value="">Seleccionar</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="grupo" class="form-label">Grupo</label>
+                            <select class="form-select" required>
+                                <option value="">Seleccionar</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="estado" class="form-label">Estado</label>
+                            <select class="form-select" required>
+                                <option value="">Seleccionar</option>
+                                <option value="En curso">En curso</option>
+                                <option value="Aprobado">Aprobado</option>
+                                <option value="Reprobado">Reprobado</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section id="registro-notas-estudiantes">
+                <div id="contenedor-notas-estudiantes" class="mt-4">
+                    <h2 class="titulos mt-5 fs-6">Resultados</h2>
+                    <table class="tablas table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Año</th>
+                                <th>Grado</th>
+                                <th>Grupo</th>
+                                <th>Estado</th>
+                                <th>Nota Promedio</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-notas-estudiantes">
+                            <tr>
+                                <th>2025106</th>
+                                <th>2025</th>
+                                <th>11</th>
+                                <th>A</th>
+                                <th>
+                                    <select class="form-select" required>
+                                        <option value="">Seleccionar</option>
+                                        <option value="En curso">En curso</option>
+                                        <option value="Aprobado">Aprobado</option>
+                                        <option value="Reprobado">Reprobado</option>
+                                    </select>
+                                </th>
+                                <th>
+                                    <input type="text" class="form-control" placeholder="Ingrese el Primer Nombre"
+                                        required>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>2025106</th>
+                                <th>2024</th>
+                                <th>10</th>
+                                <th>A</th>
+                                <th>Aprobado</th>
+                                <th>4.5</th>
+                            </tr>
+                            <tr>
+                                <th>2025106</th>
+                                <th>2025</th>
+                                <th>10</th>
+                                <th>B</th>
+                                <th>Reprobado</th>
+                                <th>4.5</th>
+                            </tr>
+                            <tr>
+                                <th>2025106</th>
+                                <th>2025</th>
+                                <th>9</th>
+                                <th>A</th>
+                                <th>Aprobado</th>
+                                <th>4.5</th>
+                            </tr>
+                            <tr>
+                                <th>2025106</th>
+                                <th>2025</th>
+                                <th>8</th>
+                                <th>A</th>
+                                <th>Aprobado</th>
+                                <th>4.5</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section id="botones-formulario" class="mt-4">
+                <div class="d-flex justify-content-end mt-2">
+                    <button type="button" id="btn-cancelar-registro" class="btn btn-secondary me-2">Cancelar</button>
+                    <button type="submit" id="btn-guardar-registro" class="btn">Guardar</button>
+                </div>
+            </section>
+        </div>
+    </div>
+    <section id="ver-estudiante">
+    </section>
+    <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEliminarLabel">Eliminar [nombre_estudiante]</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+
+                <div class="modal-body" id="modalEliminarMensaje">
+                    ¿Estás seguro que deseas eliminar el registro de estudiante?
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="button" id="btn-confirmar-eliminar" class="btn btn-danger">Sí, eliminar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
